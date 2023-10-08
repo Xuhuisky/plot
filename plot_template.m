@@ -57,3 +57,25 @@ ax = gca;
 ax.FontSize = 12; % thicken the ticklabels
 xlabel("Time $t$,s","FontSize",12,'Interpreter',"latex");
 ylabel("Voltage $V$, V","FontSize",12,'Interpreter',"latex");
+
+%% Example for log-log scale & semi-log scale plot
+hold off;
+ia = 10;
+x1 = zeros(1,13);
+ic = 0;
+while ia <= 1e7
+    ic = ic+1;
+    if mod(ia,3) == 1
+        x1(1,ic) = ia;
+        ia = ia*3;
+    else
+        x1(1,ic) = ia;
+        ia = ia*10/3;
+    end
+end % generating x1
+
+y1 = [20, 20, 19.9, 20.1, 20, 20, 20, 20.3, 14.6, 5.20, 0.67, -16.5, -30.5];
+semilogx(x1, y1,"kx","LineWidth", 1.5);
+% saveas(gcf,'Cold_Cola.jpg');
+% semilogy(x1, y1,"kx","LineWidth", 1.5);
+% loglog(x1, y1,"kx","LineWidth", 1.5);
